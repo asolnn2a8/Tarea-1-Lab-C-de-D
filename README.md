@@ -2,6 +2,7 @@
 Repositorio destinado a la Tarea 1 del Laboratorio de Ciencias de Datos. Este es el [enunciado](.\tarea1.pdf)
 
 Para editar el informe, hacer click [aquí](https://www.overleaf.com/6431364931fbzjxsjtfymh)
+Se puede observar el informe [aquí](./Tarea_1_Lab_C_de_D.pdf)
 
 ## Forma de trabajar:
 * Para agregar contenido al informe, dirigirse a la carpeta ```_preguntas```.
