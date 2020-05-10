@@ -1,4 +1,9 @@
 %%%%%%%%%%%%%%%%%% LISTA DE SÍMBOLOS %%%%%%%%%%%%%%%%%%
+% ================= ESTILOS =================
+% Estilo de vector y estilo de matriz
+\newcommand{\estVect}[1]{\mathbf{#1}}
+\newcommand{\estMatr}[1]{\mathbf{#1}}
+
 % ================= LETRAS =================
 \def \nn {\mathcal{N}}
 \def \mm {\mathcal{M}}
@@ -10,19 +15,19 @@
 
 % ================= ÁLGEBRA LINEAL =================
 % Matriz identidad
-\def \IM {\mathbf{I}}
+\def \IM {\estMatr{I}}
 % X matrix
-\def \XM {\mathbf{X}}
+\def \XM {\estMatr{X}}
 % S matrix
-\def \SM {\mathbf{S}}
+\def \SM {\estMatr{S}}
 
 % x vector
-\def \xv {\mathbf{x}}
+\def \xv {\estVect{x}}
 % y vector
-\def \yv {\mathbf{y}}
+\def \yv {\estVect{y}}
 % w vector
-\def \wv {\mathbf{w}}
+\def \wv {\estVect{w}}
 % m vector
-\def \mv {\mathbf{m}}
+\def \mv {\estVect{m}}
 % cero vector
-\def \cerov {\mathbf{0}}
+\def \cerov {\estVect{0}}
