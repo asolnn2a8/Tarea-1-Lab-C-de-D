@@ -12,6 +12,7 @@ Para editar el informe, hacer click [aquí](https://www.overleaf.com/6431364931f
  
 ## TODO's
 Esta será la lista de quehaceres.
+### P1.1.
 * ~~Crear un módulo de las rutas a la data.~~
 * Cargar la base de datos en una sola tabla.
 * Generar una variable categórica para indicar si la observación proviene del archivo `'furnished'`.
