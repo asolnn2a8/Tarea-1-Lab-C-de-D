@@ -14,5 +14,6 @@ Para editar el informe, hacer click [aquí](https://www.overleaf.com/6431364931f
 Esta será la lista de quehaceres.
 ### P1.1.
 * ~~Crear un módulo de las rutas a la data.~~
-* Cargar la base de datos en una sola tabla.
+* ~~Cargar la base de datos en una sola tabla.~~ (creo)
+* Asegurarse que la base de datos se cargó en una sola tabla correctamente. Asegurarse que el DataFrame no tiene elementos `nan`.
 * Generar una variable categórica para indicar si la observación proviene del archivo `'furnished'`.
