@@ -20,11 +20,13 @@ Esta será la lista de quehaceres.
 
 * ~~Crear un módulo de las rutas a la data.~~
 * ~~Cargar la base de datos de `'all'` en una sola tabla.~~ 
-* Agregar los datos de `'furnished'` a la tabla original.
-* Agregar una nueva columna de categoría.
-* Asegurarse que la base de datos se cargó en una sola tabla correctamente. 
+* ~~Agregar los datos de `'furnished'` a la tabla original.~~
+* ~~Agregar una nueva columna de categoría.~~
+* ~~Asegurarse que la base de datos se cargó en una sola tabla correctamente.~~ 
+
+### P1.2.
+
 * Asegurarse que el DataFrame no tiene elementos `nan`.
-* Generar una variable categórica para indicar si la observación proviene del archivo `'furnished'`.
 
 ### P3 (Parte teórica)
 
