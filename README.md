@@ -25,3 +25,9 @@ Esta será la lista de quehaceres.
 * Asegurarse que la base de datos se cargó en una sola tabla correctamente. 
 * Asegurarse que el DataFrame no tiene elementos `nan`.
 * Generar una variable categórica para indicar si la observación proviene del archivo `'furnished'`.
+
+### P3 (Parte teórica)
+
+* Mostrar que la distribución posterior de los parámetros w es proporcional a una gaussiana y escribir la demostración en el reporte. 
+* Mostras la forma de la distribución predictiva posterior y escribir la demostración en el reporte.
+* Deducir la forma de la log-verosimilitud de $p(y|\alpha,\beta)$
