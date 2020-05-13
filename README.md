@@ -30,4 +30,6 @@ Esta será la lista de quehaceres.
 
 * Mostrar que la distribución posterior de los parámetros w es proporcional a una gaussiana y escribir la demostración en el reporte. 
 * Mostras la forma de la distribución predictiva posterior y escribir la demostración en el reporte.
-* Deducir la forma de la log-verosimilitud de p(\vy | \alpha, \beta)
+* Deducir la forma de la log-verosimilitud de p(y| alpha, beta) y escribir el desarrollo en el reporte.
+* Maximizar la función log-verosimilitud marginal en (3) para obtener las soluciones implícitas y escribir el desarrollo en el reporte.
+ 
