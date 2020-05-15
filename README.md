@@ -26,7 +26,21 @@ Esta será la lista de quehaceres.
 
 ### P1.2.
 
-* Asegurarse que el DataFrame no tiene elementos `nan`.
+* ~~Limpiar las columnas Precio, área del inmueble, número de habitaciones y número de baños para asegurarse que estas columnas no tengan elementos `nan`.~~
+* ~~Crear tres columnas a partir de `'property_type|rent_type|location'`:~~
+    * ~~Columna `'Tipo de inmueble'`.~~
+    * ~~Columna `'Tipo de oferta'`.~~
+    * ~~Columna `'location'`.~~
+
+### P1.3.
+
+* ~~Desarrollar las funciones necesarias para el procesamiento de las columnas.~~
+* ~~Mapear y procesar las columnas con las funciones creadas.~~
+* ~~Agregar las columnas procesadas al `DataFrame` principal.~~
+
+### P1.4.
+
+* Clasificar las observaciones por tipo de producto, de acuerdo a los criterios de la tabla que aparede en el [enunciado](tarea1.pdf).
 
 ### P3 (Parte teórica)
 
