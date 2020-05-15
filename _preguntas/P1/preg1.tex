@@ -1,4 +1,7 @@
 \section{Carga y limpieza de datos}
-Hola soy la pregunta 1
+
+Para iniciar con la carga y limpieza de datos, primero se creo el módulo "paths" en donde se hará registro de todas las rutas necesarias para realizar la tarea. Además, se generan las rutas PATH\_DATA y PATH\_RAW, que serán a las carpetas "data" y "raw" respectivamente. Luego se utilizará el diccionario dict\_path\_raw, para que al entregarle la llave "wNN", indicará la ruta de la carpeta "wNN" en "raw". Sumado a este diccionario se crean otros dos, dict\_csv\_mc\_a y dict\_csv\_mc\_f, con el fin de que entreguen la ruta para los archivos .csv, "metrocuadrado\_all\_wNN" y "metrocuadrado\_furnished\_wNN" respectivamente, al darles de llave "wNN".
+
+Después, con el fin generar "furnished" y de eliminar los datos duplicados, se procede a crear un único DataFrame que contenga la información de los datasets proporcionados. Primero se crean dos listas de DataFrames, uno para "all" y el otro para "furnished", para luego concatenar los DataFrames en dos DataFrames únicos, nuevamente uno para "all" y otro para "furnished". Así, se crea una nueva columna "furnished", que informa si el DataFrame proviene de "furnished", que será indicado con un 1, o si viene de "all", indicado con un 0. Posteriormente se unen los dos DataFrames anteriores en uno único, añadiendo la columna extra creada, para finalmente eliminar los duplicados con la función drop_duplicates de pandas.
 
 $\pN{x}{\vx}{\vw}$
