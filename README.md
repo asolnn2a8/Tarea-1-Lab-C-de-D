@@ -23,6 +23,7 @@ Esta será la lista de quehaceres.
 * ~~Agregar los datos de `'furnished'` a la tabla original.~~
 * ~~Agregar una nueva columna de categoría.~~
 * ~~Asegurarse que la base de datos se cargó en una sola tabla correctamente.~~ 
+* Reporte si existen observaciones de archivos con texto `'furnished'` que no esten contenidos en archivos con texto `'all'`.
 
 ### P1.2.
 
@@ -40,7 +41,7 @@ Esta será la lista de quehaceres.
 
 ### P1.4.
 
-* Clasificar las observaciones por tipo de producto, de acuerdo a los criterios de la tabla que aparede en el [enunciado](tarea1.pdf).
+* Clasificar las observaciones por tipo de producto, de acuerdo a los criterios de la tabla que aparece en el [enunciado](tarea1.pdf).
 
 ### P3 (Parte teórica)
 
