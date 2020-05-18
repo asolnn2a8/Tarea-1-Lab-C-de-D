@@ -32,6 +32,8 @@ PATH_DATA = os.path.join(PATH_MAIN, 'data')
 PATH_RAW = os.path.join(PATH_DATA, 'raw')
 #: Path de asignacion_upz
 PATH_ASIG_UPZ = os.path.join(PATH_DATA, 'asignacion_upz')
+#: Path de estadisticas_upz
+PATH_EST_UPZ = os.path.join(PATH_DATA, 'estadisticas_upz')
 
 #: Diccionario de las carpetas wNN. Se ingresa con la llave 'wNN'
 dict_path_raw = {
@@ -48,3 +50,13 @@ dict_csv_mc_f = {
 
 #: Path al .csv de 'barrio-upz.csv'
 path_csv_barrio_upz = os.path.join(PATH_ASIG_UPZ, 'barrio-upz.csv')
+
+#: Diccionario para las rutas de la carpeta estadisticas_upz
+L_est_upz = [
+    'estadisticas_poblacion',
+    'indice_inseguridad',
+    'porcentaje_areas_verdes'
+]
+dict_csv_est_upz = {
+    name_csv:os.path.join(PATH_EST_UPZ, name_csv + '.csv') for name_csv in L_est_upz
+}
