@@ -1,137 +1,134 @@
 \section{Regresión Lineal Bayesiana}
 
-\section{Regresión Lineal Bayesiana}
-
-
-\subsection{Parte 3}
+% \subsection{Parte 3}
 Tenemos que
 
 \begin{equation}
     P(D|\alpha,\beta)=\int  P(D|w,\beta)P(w|\alpha)dw
 \end{equation}
 
-Notamos que la ultima ecuación no se puede resolver por integración  directa, luego se hace necesario un metodo para aproximar la dsitribución conjunta dada por teroema de Bayes de $ P(D|\alpha,\beta)$. Para esto se utiliza el metodo de Laplace. Sea una distribución sobre un espacio M dimensional $P(z)$ tal que
-\begin{equation}
-    P(Z)=\frac{f(z)}{Z}
-\end{equation}
-con $z=\int f(z) dz$ factor de nomalización. 
+% Notamos que la ultima ecuación no se puede resolver por integración  directa, luego se hace necesario un metodo para aproximar la dsitribución conjunta dada por teroema de Bayes de $ P(D|\alpha,\beta)$. Para esto se utiliza el metodo de Laplace. Sea una distribución sobre un espacio M dimensional $P(z)$ tal que
+% \begin{equation}
+%     P(Z)=\frac{f(z)}{Z}
+% \end{equation}
+% con $z=\int f(z) dz$ factor de nomalización. 
 
-Tenemos que la expanción en serie de Taylor de $P(Z)$ al rededor de un punto de equilibrio $Z_{0}$ viene dada por
+% Tenemos que la expanción en serie de Taylor de $P(Z)$ al rededor de un punto de equilibrio $Z_{0}$ viene dada por
 
 
-\begin{equation}
-   ln (f(Z))\cong ln( f(Z_{0}))-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}
-\end{equation}
-con $Z_{0}$ punto estacionario tal que $A=-\nabla \nabla ln(f(z))|_{z=z_{0}} $. Luego, aplicando exp en (3)
+% \begin{equation}
+%   ln (f(Z))\cong ln( f(Z_{0}))-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}
+% \end{equation}
+% con $Z_{0}$ punto estacionario tal que $A=-\nabla \nabla ln(f(z))|_{z=z_{0}} $. Luego, aplicando exp en (3)
 
-\begin{equation}
-    \Rightarrow{f(Z)\cong  f(Z_{0})e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}}}
-\end{equation}
+% \begin{equation}
+%     \Rightarrow{f(Z)\cong  f(Z_{0})e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}}}
+% \end{equation}
 
-de esta manera una distribucion z Gaussiana viene dada por
+% de esta manera una distribucion z Gaussiana viene dada por
 
-\begin{equation}
-    Z=\int f(z) dz\cong \int f(z_{0})e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}} dz \\
-    =f(z_{0})\int e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}} dz 
+% \begin{equation}
+%     Z=\int f(z) dz\cong \int f(z_{0})e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}} dz \\
+%     =f(z_{0})\int e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}} dz 
     
-\end{equation}
+% \end{equation}
 
-En donde el valor de la integral, se debe diagonalizar A, en donde tomando $A=O^{T}DO$, con $O$ ortogonal, y D matriz diagonal definida positiva. Haciendo $v\rightarrow {Ov}$, con $det(O)=1$, se llega a que el termino que acompaña a la exponencial es $e^{\frac{-v^{T}DV}{2}}$
+% En donde el valor de la integral, se debe diagonalizar A, en donde tomando $A=O^{T}DO$, con $O$ ortogonal, y D matriz diagonal definida positiva. Haciendo $v\rightarrow {Ov}$, con $det(O)=1$, se llega a que el termino que acompaña a la exponencial es $e^{\frac{-v^{T}DV}{2}}$
 
-Luego como D, es diagonal, se llega a una integral que se factoriza en M Gaussianas independientes, en donde si se recuerda que 
+% Luego como D, es diagonal, se llega a una integral que se factoriza en M Gaussianas independientes, en donde si se recuerda que 
 
-\begin{equation}
-    \int_{-\infty}^{\infty} e^{-x^{2}}dx=\sqrt{\pi}
-\end{equation}
+% \begin{equation}
+%     \int_{-\infty}^{\infty} e^{-x^{2}}dx=\sqrt{\pi}
+% \end{equation}
 
-se tiene que cada integral va a contribuir en $\sqrt{\frac{2\pi}{\d_{i}}}$, con $d_{i}$, $i=1,...,M$. Notamos que \begin{equation}
-    \prod_{i=1}^{N}d_{i}=det D =det A
-\end{equation}
+% se tiene que cada integral va a contribuir en $\sqrt{\frac{2\pi}{\d_{i}}}$, con $d_{i}$, $i=1,...,M$. Notamos que \begin{equation}
+%     \prod_{i=1}^{N}d_{i}=det D =det A
+% \end{equation}
 
-De esta manera, se tiene que 
-\begin{equation}
-    \int e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}} dz =\sqrt{\frac{(2\pi)^{M}}{(det A)}
+% De esta manera, se tiene que 
+% \begin{equation}
+%     \int e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}} dz =\sqrt{\frac{(2\pi)^{M}}{(det A)}
     
-\end{equation}
+% \end{equation}
 
 
-Ahora, volviendo a (1), considerando un dataset i.i.d  de N observaciones tales $x_{1},...,x_{N}$ con un conjunto de etiquetas $D={t_{1},...,t_{N}}$, utilizando el teorema de probabilidad total, tenemos que la distribución $P(D|w,\beta)$ viene dada por
+% Ahora, volviendo a (1), considerando un dataset i.i.d  de N observaciones tales $x_{1},...,x_{N}$ con un conjunto de etiquetas $D={t_{1},...,t_{N}}$, utilizando el teorema de probabilidad total, tenemos que la distribución $P(D|w,\beta)$ viene dada por
 
-\begin{equation*}
-P(D|w,\beta)=\prod_{n=1}^{N}N(t_{n}|y(x_{n},w),\beta^{-1})
-\end{equation*}
-
-
-Además consideramos un prior sobre los pesos w Gaussiano, tal que 
-
-\begin{equation}
-P(w,\alfa)=N(w|0,\alpha^{-1}I)
-\end{equation}
-
-Reemplazando lo anterior en RRTYRTYRTY
-
-\begin{equation}
-    P(D|\alpha,\beta)\cong \prod_{i=1}^{N}N(t_{n}|y(x_{n},w),\beta^{-1})N(w|0,\alpha^{-1}I)\sqrt{\frac{(2\pi)^{M}}{A}}
-\end{equation}
-
-Finalmente, basta aplicar ln a la ecuación anterior, para obtener lo pedido..
+% \begin{equation*}
+% P(D|w,\beta)=\prod_{n=1}^{N}N(t_{n}|y(x_{n},w),\beta^{-1})
+% \end{equation*}
 
 
-\begin{equation}
-  ln  P(D|\alpha,\beta)=\frac{dlog(\alpha)}{2}+\frac{Nlog(\beta)}{2}-E(m_{N})-\frac{log(S_{N}^{-1})}{2}-\frac{Nlog(2\pi)}{2}
-\end{equation}
+% Además consideramos un prior sobre los pesos w Gaussiano, tal que 
+
+% \begin{equation}
+% P(w,\alfa)=N(w|0,\alpha^{-1}I)
+% \end{equation}
+
+% Reemplazando lo anterior en RRTYRTYRTY
+
+% \begin{equation}
+%     P(D|\alpha,\beta)\cong \prod_{i=1}^{N}N(t_{n}|y(x_{n},w),\beta^{-1})N(w|0,\alpha^{-1}I)\sqrt{\frac{(2\pi)^{M}}{A}}
+% \end{equation}
+
+% Finalmente, basta aplicar ln a la ecuación anterior, para obtener lo pedido..
 
 
-\subsection{Parte 4}
-Para encontar el optimo para cada variable, debemos derivar la ecuación (3) de la tarea. Ahora, considerando los valores y vectores propios del sistema 
+% \begin{equation}
+%   ln  P(D|\alpha,\beta)=\frac{dlog(\alpha)}{2}+\frac{Nlog(\beta)}{2}-E(m_{N})-\frac{log(S_{N}^{-1})}{2}-\frac{Nlog(2\pi)}{2}
+% \end{equation}
 
-\begin{equation}
-    \beta x^{T}x\mu_{i}=\lambda_{i}\mu_{i}
-\end{equation}
 
-De donde se tiene que $S_{N}$ tiene eigenvalores $\alpha+\lambda_{i}$, Luego tomando la derivada de $S_{N}^{-1}$ respecto a $\alpha$
+% \subsection{Parte 4}
+% Para encontar el optimo para cada variable, debemos derivar la ecuación (3) de la tarea. Ahora, considerando los valores y vectores propios del sistema 
 
-\begin{equation}
-    \frac{\partial ln S_{N}}{\partial \alpha}=\frac{\partial }{\partial \alpha} ln \prod_{i=1}^{N}(\lambda_{i}+\alpha)=\frac{\partial }{\partial \alpha} \sum_{i}ln(\lambda_{i}+\alpha)=\sum_{i}\frac{1}{\lambda_{i}+\alpha}
-\end{equation}
+% \begin{equation}
+%     \beta x^{T}x\mu_{i}=\lambda_{i}\mu_{i}
+% \end{equation}
 
-Luego, tomando este ultimo resultado, y reemplazando en la derivada de la ecuación (3) de la tarea respecto a $\alpha$, se tiene
+% De donde se tiene que $S_{N}$ tiene eigenvalores $\alpha+\lambda_{i}$, Luego tomando la derivada de $S_{N}^{-1}$ respecto a $\alpha$
 
-\begin{equation}
-    \frac{\partial  log(P(y|\alpha,\beta))}{\partial \alpha}= \frac{d}{2\alpha}+\frac{m_{N}^{T}m_{N}}{2}-\frac{\sum_{i}}{\lambda_{i}+\alpha}=0
-\end{equation}
-Multiplicando por $2\alpha$ y reordenando
+% \begin{equation}
+%     \frac{\partial ln S_{N}}{\partial \alpha}=\frac{\partial }{\partial \alpha} ln \prod_{i=1}^{N}(\lambda_{i}+\alpha)=\frac{\partial }{\partial \alpha} \sum_{i}ln(\lambda_{i}+\alpha)=\sum_{i}\frac{1}{\lambda_{i}+\alpha}
+% \end{equation}
 
-\begin{equation}
-    \alpha m_{N}^{T}m_{N}=M-\alpha\sum_{i}\frac{1}{\lambda_{i}+\alpha}=\gamma
+% Luego, tomando este ultimo resultado, y reemplazando en la derivada de la ecuación (3) de la tarea respecto a $\alpha$, se tiene
+
+% \begin{equation}
+%     \frac{\partial  log(P(y|\alpha,\beta))}{\partial \alpha}= \frac{d}{2\alpha}+\frac{m_{N}^{T}m_{N}}{2}-\frac{\sum_{i}}{\lambda_{i}+\alpha}=0
+% \end{equation}
+% Multiplicando por $2\alpha$ y reordenando
+
+% \begin{equation}
+%     \alpha m_{N}^{T}m_{N}=M-\alpha\sum_{i}\frac{1}{\lambda_{i}+\alpha}=\gamma
     
-\end{equation}
+% \end{equation}
 
-\begin{equation}
-    \Rightarrow{\alpha}=\frac{\gamma}{m_{N}^{T}m_{N}} 
+% \begin{equation}
+%     \Rightarrow{\alpha}=\frac{\gamma}{m_{N}^{T}m_{N}} 
     
-\end{equation}
+% \end{equation}
 
-Ahora, para encontrar el maximo en $\beta$ se procede de manera similiar. 
-
-
+% Ahora, para encontrar el maximo en $\beta$ se procede de manera similiar. 
 
 
-\begin{equation}
-    \frac{\partial ln S_{N}}{\partial \beta}= \frac{\partial }{\partial \beta}\sum_{i}ln(\lambd_{i}+\alpha)=\frac{1}{\beta}\sum_{i}\frac{\lambda_{i}}{\lambda_{i}+\alpha}=\frac{\gamma}{\beta}
-\end{equation}
-
-Reemplazando en la derivada de $S_{N}$ con respecto a $\beta$ se obtiene
-
-\begin{equation}
-    \frac{\partial log(P(y|\alpha,\beta)) }{\partial \beta}=0
-\end{equation}
 
 
-\begin{equation}
-   \Rightarrow{\frac{N}{2\beta}-\frac{\sum_{i}(t_{n}-m_{N}^{T}\phi(x_{n}))^{2}}{2}-\frac{\gamma}{2\beta}=0
-\end{equation}
+% \begin{equation}
+%     \frac{\partial ln S_{N}}{\partial \beta}= \frac{\partial }{\partial \beta}\sum_{i}ln(\lambd_{i}+\alpha)=\frac{1}{\beta}\sum_{i}\frac{\lambda_{i}}{\lambda_{i}+\alpha}=\frac{\gamma}{\beta}
+% \end{equation}
 
-\begin{equation}
-   \Rightarrow{\frac{1}{\beta}=\frac{\sum_{i}^{N}(t_{n}-m_{N}^{T}\phi(x_{n}))^{2}}{N-\beta}}
-\end{equation}
+% Reemplazando en la derivada de $S_{N}$ con respecto a $\beta$ se obtiene
+
+% \begin{equation}
+%     \frac{\partial log(P(y|\alpha,\beta)) }{\partial \beta}=0
+% \end{equation}
+
+
+% \begin{equation}
+%   \Rightarrow{\frac{N}{2\beta}-\frac{\sum_{i}(t_{n}-m_{N}^{T}\phi(x_{n}))^{2}}{2}-\frac{\gamma}{2\beta}=0
+% \end{equation}
+
+% \begin{equation}
+%   \Rightarrow{\frac{1}{\beta}=\frac{\sum_{i}^{N}(t_{n}-m_{N}^{T}\phi(x_{n}))^{2}}{N-\beta}}
+% \end{equation}
