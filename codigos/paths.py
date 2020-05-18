@@ -35,7 +35,7 @@ PATH_ASIG_UPZ = os.path.join(PATH_DATA, 'asignacion_upz')
 #: Path de estadisticas_upz
 PATH_EST_UPZ = os.path.join(PATH_DATA, 'estadisticas_upz')
 #: Path de los datos depurados en la parte 1
-PATH_LIMPIO = os.path.join(PATH_DATA, '')
+PATH_LIMPIO = os.path.join(PATH_DATA, 'data_limpia')
 
 #: Diccionario de las carpetas wNN. Se ingresa con la llave 'wNN'
 dict_path_raw = {
@@ -62,3 +62,6 @@ L_est_upz = [
 dict_csv_est_upz = {
     name_csv:os.path.join(PATH_EST_UPZ, name_csv + '.csv') for name_csv in L_est_upz
 }
+
+#: Path al .csv de los datos depurados
+path_csv_limpio = os.path.join(PATH_LIMPIO, 'data_limpia.csv')
