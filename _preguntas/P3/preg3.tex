@@ -1,6 +1,93 @@
 \section{Regresión Lineal Bayesiana}
 \subsection{Parte 1}
+
+Se quiere demostrar que
+
+\begin{equation}
+\label{pdq}
+    P(\overrightarrow{w}|\overrightarrow{y},X,\alpha,\beta) \sim \nn(\overrightarrow{m_N}, S_N)
+\end{equation}
+para eso, nótese que la probabilidad de la izquierda es proporcional a
+
+\begin{equation}
+\label{p1p2}
+    P(\overrightarrow{y}|\overrightarrow{w}, X, \alpha, \beta)P(\overrightarrow{w}|X,\alpha,\beta).
+\end{equation}
+
+Trabajando la primera probabilidad de \eqref{p1p2}, se nota que $y \perp \alpha$, por lo que queda y se desarrolla lo siguiente:
+
+\begin{equation}
+    P(\overrightarrow{y}|X,\overrightarrow{w}, \beta) = (2\pi\beta^{-1})^{\frac{N}{2}} e^{-\frac{\beta}{2}(\overrightarrow{y}-X\overrightarrow{w})^{t}(\overrightarrow{y}-X\overrightarrow{w})}
+\end{equation}
+donde se utiliza que son iid y que $y_i \perp \overrightarrow{x_j}\  \forall j \not= i$.
+
+Viendo ahora la segunda probabilidad de \eqref{p1p2}, nuevamente hay una perpendicularidad, que $\overrightarrow{w} \perp X,\beta$, por lo que queda y se desarrolla en lo siguiente:
+
+\begin{equation}
+    p(\overrightarrow{w}|\alpha) = (2\pi \alpha^{-1})^{\frac{d}{2}} e^{-\frac{\alpha}{2}\overrightarrow{w}^t\overrightarrow{w}}
+\end{equation}
+donde se toma en cuenta que $\overrightarrow{w} \in \mathbb{R}^{[0,...,d-1]}$.
+
+Utilizando estos resultados se obtiene que es proporcional a una exponente, con lo siguiente dentro:
+
+\begin{equation}
+    -\frac{1}{2}( \beta(\overrightarrow{y} - X\overrightarrow{w})^{t}(\overrightarrow{y} - X\overrightarrow{w})-\alpha \overrightarrow{w}^{t}\overrightarrow{w})
+\end{equation}
+donde desarrollando se puede deducir que la probabilidad es proporcional a
+
+\begin{equation}
+    e^{-\frac{1}{2}(\overrightarrow{w}-\overrightarrow{m_N})^{t}S_{N}^{-1}(\overrightarrow{w}-\overrightarrow{m_N} + cte)}.
+\end{equation}
+Finalmente con esto último se demuestra \eqref{pdq}.
+
 \subsection{Parte 2}
+
+Se inicia desarrollando
+
+\begin{equation}
+    P(y'| \overrightarrow{x}',\overrightarrow{y},X,\alpha,\beta) = \int d\overrightarrow{w} P(y'|\overrightarrow{x}',\overrightarrow{w},\beta)P(\overrightarrow{w}|\overrightarrow{y},X,\alpha,\beta)\\
+\end{equation}
+para quedar proporcional a
+\begin{equation}
+\label{int1}
+    \int d\overrightarrow{w} e^{-\frac{1}{2}[\beta y'^2-2\overrightarrow{w}^t(\beta y'\overrightarrow{x}')+\overrightarrow{w}^t(\beta\overrightarrow{x}'\overrightarrow{x}^t)\overrightarrow{w}+\overrightarrow{w}^{t}S_{N}^{-1}\overrightarrow{w}-2\overrightarrow{w}^{t}S_{N}^{-1}\overrightarrow{m_N}]}
+\end{equation}
+
+Desarrollando queda que \eqref{int1} es igual a
+
+\begin{equation}
+    e^{-\frac{1}{2}[\beta y'^2 - \overrightarrow{\mu}^t\Lambda\overrightarrow{\mu}]}\int d\overrightarrow{w}e^{-\frac{1}{2}(\overrightarrow{w}-\overrightarrow{\mu})^t\Lambda(\overrightarrow{w}-\overrightarrow{\mu})}
+\end{equation}
+donde $\Lambda = \beta\overrightarrow{x}'\overrightarrow{x}'^t + S_{N}^{-1}$ y $\overrightarrow{\mu} = \Lambda^{-1}(\beta y' \overrightarrow{x}' + S_{N}^{-1}m_N)$, asumiendo que existe el inverso de $\Lambda$. Notando que el lado derecho es la integral de una Gaussiana, que de hecho integra $(2\pi|\Lambda|)^{\frac{1}{2}}$, por lo tanto, no afecta al cálculo dentro de la exponente.
+
+Con lo anterior se tiene que la probabilidad es proporcional a
+
+\begin{equation}
+    e^{-\frac{1}{2}[\beta y'^2 - \overrightarrow{\mu}^t\Lambda\overrightarrow{\mu}]}
+\end{equation}
+en donde, desarrollando el paréntesis en el exponente, se llega a que tiene la forma $\lambda (y'-u)^2$, con $\lambda = \beta(1-\beta\overrightarrow{x}'^{t}\Lambda^{-1}\overrightarrow{x}')$ y $u = \frac{1}{\lambda}(\beta\overrightarrow{x}'^{t}\Lambda^{-1}S_{N}^{-1}\overrightarrow{m_N})$. Es decir;
+
+\begin{equation}
+    P(y'|\overrightarrow{x}',\overrightarrow{y},X,\alpha,\beta) \sim \nn (u,\frac{1}{\lambda})
+\end{equation}
+por lo que falta ver que 
+
+\begin{equation}
+\label{ul}
+    u = m_{N}^{t}\overrightarrow{x}',\ \frac{1}{\lambda} = \frac{1}{\beta} + \overrightarrow{x}'^t S_{N}^{-1}\overrightarrow{x}'
+\end{equation}
+
+
+Para calcular la inversa de $\Lambda$, se ocupará Sherman-Morrison \url{https://en.wikipedia.org/wiki/Sherman\%E2\%80\%93Morrison\_formula}. En este caso
+
+\begin{equation}
+\label{L}
+    \Lambda^{-1} = ([S_{N}^{-1}] + [\beta\overrightarrow{x}'][\overrightarrow{x}'^t])^{-1} = S_N - \cfrac{\beta S_N \overrightarrow{x}'\overrightarrow{x}'^t S_N}{1 + \beta \overrightarrow{x}'^t S_N \overrightarrow{x}'}
+\end{equation}
+
+Si se multiplica en \eqref{L} $\overrightarrow{x}´^t$ por la derecha y $\overrightarrow{x}'$ por la izquierda, se puede reemplazar en $\lambda$, obteniendo lo que se pedía en \eqref{ul}. Para sacar $u$ se multiplica por la derecha por $S_{N}^{-1}$ en \eqref{L} y reemplazar en $u$, queda lo pedido en \eqref{ul}.
+
+
 \subsection{Parte 3}
 Tenemos que
 
@@ -8,13 +95,13 @@ Tenemos que
     P(D|\alpha,\beta)=\int  P(D|w,\beta)P(w|\alpha)dw
 \end{equation}
 
-Notamos que la ultima ecuación no se puede resolver por integración  directa, luego se hace necesario un metodo para aproximar la dsitribución conjunta dada por teroema de Bayes de $ P(D|\alpha,\beta)$. Para esto se utiliza el metodo de Laplace. Sea una distribución sobre un espacio M dimensional $P(z)$ tal que
+Notamos que la ultima ecuación no se puede resolver por integración  directa, luego se hace necesario un método para aproximar la distribución conjunta dada por teorema de Bayes de $ P(D|\alpha,\beta)$. Para esto se utiliza el método de Laplace. Sea una distribución sobre un espacio M dimensional $P(z)$ tal que
 \begin{equation}
     P(Z)=\frac{f(z)}{Z}
 \end{equation}
-con $z=\int f(z) dz$ factor de nomalización. 
+con $z=\int f(z) dz$ factor de normalización. 
 
-Tenemos que la expanción en serie de Taylor de $P(Z)$ al rededor de un punto de equilibrio $Z_{0}$ viene dada por
+Tenemos que la expansión en serie de Taylor de $P(Z)$ al rededor de un punto de equilibrio $Z_{0}$ viene dada por
 
 
 \begin{equation}
@@ -26,7 +113,7 @@ con $Z_{0}$ punto estacionario tal que $A=-\nabla \nabla ln(f(z))|_{z=z_{0}} $. 
     \Rightarrow{f(Z)\cong  f(Z_{0})e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}}}
 \end{equation}
 
-de esta manera una distribucion z Gaussiana viene dada por
+de esta manera una distribución z Gaussiana viene dada por
 
 \begin{equation}
     Z=\int f(z) dz\cong \int f(z_{0})e^{-\frac{(z-z_{0})^{T}A(z-z_{0})}{2}} dz \\
